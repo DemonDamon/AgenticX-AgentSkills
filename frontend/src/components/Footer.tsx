@@ -1,62 +1,43 @@
 import { Link } from 'react-router-dom'
+import { useI18n } from '../i18n'
 
 export default function Footer() {
+  const { t } = useI18n()
+
   return (
     <footer className="bg-gray-50 border-t mt-auto">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
                 <span className="text-white text-xl">🤖</span>
               </div>
               <span className="text-lg font-bold text-gray-900">Agent Skills</span>
             </div>
             <p className="text-gray-600 text-sm">
-              Empowering the next generation of AI agents with modular capabilities. Build better, faster.
+              {t('footer.tagline')}
             </p>
-          </div>
-
-          {/* Marketplace */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Marketplace</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/skills" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Browse All
-                </Link>
-              </li>
-              <li>
-                <Link to="/skills?featured=true" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Featured
-                </Link>
-              </li>
-              <li>
-                <Link to="/skills?paid=true" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Top Paid
-                </Link>
-              </li>
-            </ul>
           </div>
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Resources</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">{t('footer.resources')}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/blog" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Blog
+                <Link to="/blog" className="text-gray-600 hover:text-blue-600 text-sm">
+                  {t('header.blog')}
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Community
+                <a href="#" className="text-gray-600 hover:text-blue-600 text-sm">
+                  {t('footer.community')}
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Support
+                <a href="#" className="text-gray-600 hover:text-blue-600 text-sm">
+                  {t('footer.support')}
                 </a>
               </li>
             </ul>
@@ -64,21 +45,21 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">{t('footer.company')}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-600 text-sm">
-                  About
+                <a href="#" className="text-gray-600 hover:text-blue-600 text-sm">
+                  {t('footer.about')}
                 </a>
               </li>
               <li>
-                <Link to="/blog" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Blog
+                <Link to="/blog" className="text-gray-600 hover:text-blue-600 text-sm">
+                  {t('header.blog')}
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-600 hover:text-purple-600 text-sm">
-                  Contact
+                <a href="#" className="text-gray-600 hover:text-blue-600 text-sm">
+                  {t('footer.contact')}
                 </a>
               </li>
             </ul>
@@ -87,14 +68,14 @@ export default function Footer() {
 
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-sm">
-            © 2024 Agent Skills Inc. All rights reserved.
+            {t('footer.copyright')}
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-600 hover:text-purple-600 text-sm">
-              Privacy Policy
+            <a href="#" className="text-gray-600 hover:text-blue-600 text-sm">
+              {t('footer.privacyPolicy')}
             </a>
-            <a href="#" className="text-gray-600 hover:text-purple-600 text-sm">
-              Terms of Service
+            <a href="#" className="text-gray-600 hover:text-blue-600 text-sm">
+              {t('footer.termsOfService')}
             </a>
           </div>
         </div>
