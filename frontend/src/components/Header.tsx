@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom'
-import { ShoppingCart, User, Globe } from 'lucide-react'
-import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { ShoppingCart, User } from 'lucide-react'
+import { useI18n } from '../i18n'
 
 export default function Header() {
-  const [language, setLanguage] = useState<'EN' | '中文'>('EN')
+  const { locale, setLocale, t } = useI18n()
+  const location = useLocation()
+  const isHome = location.pathname === '/'
+  const isMarketplace = location.pathname === '/skills'
 
   return (
     <header className="border-b bg-white sticky top-0 z-50">
@@ -11,7 +14,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
               <span className="text-white text-xl">🤖</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Agent Skills</span>
@@ -20,32 +23,39 @@ export default function Header() {
           {/* Navigation */}
           <nav className="flex items-center gap-6">
             <Link
-              to="/skills"
-              className="text-gray-700 hover:text-purple-600 font-medium border-b-2 border-purple-600 pb-1"
+              to="/"
+              className={`text-gray-700 hover:text-blue-600 font-medium pb-1 ${
+                isHome ? 'border-b-2 border-blue-600' : ''
+              }`}
             >
-              Marketplace
+              {t('header.home')}
             </Link>
-            <Link to="/blog" className="text-gray-700 hover:text-purple-600 font-medium">
-              Blog
+            <Link
+              to="/skills"
+              className={`text-gray-700 hover:text-blue-600 font-medium pb-1 ${
+                isMarketplace ? 'border-b-2 border-blue-600' : ''
+              }`}
+            >
+              {t('header.marketplace')}
             </Link>
 
             {/* Language Selector */}
             <div className="flex items-center gap-2 border rounded-lg px-2 py-1">
               <button
-                onClick={() => setLanguage('EN')}
+                onClick={() => setLocale('en')}
                 className={`px-2 py-1 rounded text-sm ${
-                  language === 'EN' ? 'bg-purple-100 text-purple-700 font-medium' : 'text-gray-600'
+                  locale === 'en' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600'
                 }`}
               >
-                EN
+                {t('header.language.en')}
               </button>
               <button
-                onClick={() => setLanguage('中文')}
+                onClick={() => setLocale('zh')}
                 className={`px-2 py-1 rounded text-sm ${
-                  language === '中文' ? 'bg-purple-100 text-purple-700 font-medium' : 'text-gray-600'
+                  locale === 'zh' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600'
                 }`}
               >
-                中文
+                {t('header.language.zh')}
               </button>
             </div>
 
