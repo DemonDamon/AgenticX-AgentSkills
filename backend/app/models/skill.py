@@ -16,6 +16,16 @@ class SkillCategory(str, Enum):
     WEB_SCRAPER = "Web Scraper"
     CONTENT_CREATION = "Content Creation"
     DEVELOPMENT = "Development"
+    BROWSER_AUTOMATION = "Browser Automation"
+    SEARCH_TOOLS = "Search Tools"
+    COMMUNICATION_COLLABORATION = "Communication & Collaboration"
+    DEVELOPER_TOOLS = "Developer Tools"
+    ENTERTAINMENT_MEDIA = "Entertainment & Media"
+    FILE_SYSTEM = "File System"
+    KNOWLEDGE_MEMORY = "Knowledge & Memory"
+    AI_AUDIO = "AI & Audio"
+    WEB_TOOLS = "Web & Tools"
+    AI_MEDIA = "AI & Media"
     OTHER = "Other"
 
 
