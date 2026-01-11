@@ -2,8 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Star, Download, Clock, Tag } from 'lucide-react'
 import { skillsApi } from '../utils/api'
+import { useI18n } from '../i18n'
 
 export default function SkillDetailPage() {
+  const { t } = useI18n()
   const { id } = useParams<{ id: string }>()
   const skillId = parseInt(id || '0')
 
@@ -15,7 +17,7 @@ export default function SkillDetailPage() {
   if (isLoading) {
     return (
       <div className="container mx-auto px-4 py-12">
-        <div className="text-center">Loading...</div>
+        <div className="text-center">{t('common.loading')}</div>
       </div>
     )
   }
@@ -23,7 +25,7 @@ export default function SkillDetailPage() {
   if (error || !skill) {
     return (
       <div className="container mx-auto px-4 py-12">
-        <div className="text-center text-red-600">Skill not found</div>
+        <div className="text-center text-red-600">{t('common.error')}</div>
       </div>
     )
   }
@@ -32,7 +34,7 @@ export default function SkillDetailPage() {
     <div className="container mx-auto px-4 py-12">
       <Link
         to="/skills"
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-purple-600 mb-6"
+        className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 mb-6"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to Skills
@@ -49,7 +51,7 @@ export default function SkillDetailPage() {
               </div>
               {skill.is_free && (
                 <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
-                  FREE
+                  {t('common.free')}
                 </span>
               )}
             </div>
@@ -93,7 +95,7 @@ export default function SkillDetailPage() {
                 {skill.llm_compatibility.map((llm) => (
                   <span
                     key={llm}
-                    className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm"
+                    className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm"
                   >
                     {llm}
                   </span>
@@ -145,7 +147,7 @@ export default function SkillDetailPage() {
               <div className="text-sm text-gray-600">Version {skill.version}</div>
             </div>
 
-            <button className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 font-medium mb-4">
+            <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 font-medium mb-4">
               Install Skill
             </button>
 
