@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     # API Settings
     API_V1_PREFIX: str = "/api/v1"
     PROJECT_NAME: str = "AgenticX-AgentSkills"
+    PORT: int = 8001
+    HOST: str = "0.0.0.0"
     
     # CORS
     CORS_ORIGINS: List[str] = [
