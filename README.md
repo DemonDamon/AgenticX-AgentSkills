@@ -66,8 +66,10 @@ cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8001
 ```
+
+后端服务将在 `http://localhost:8001` 启动。
 
 ### 前端启动
 
